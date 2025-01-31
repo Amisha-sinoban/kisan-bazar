@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inventory Management</h1>
+
+        <div class="form-container">
+            <input type="text" id="itemName" placeholder="Enter item name">
+            <input type="number" id="itemQuantity" placeholder="Enter quantity">
+            <input type="number" id="itemPrice" placeholder="Enter price">
+            <select id="itemCategory">
+                <option value="grainsList">Food Grains/Cereals</option>
+                <option value="pulsesList">Pulses/Legumes</option>
+                <option value="oilseedsList">Oilseeds</option>
+                <option value="fruitsList">Fruits</option>
+                <option value="vegetablesList">Vegetables</option>
+            </select>
+            <button onclick="addItem()">Add Item</button>
+        </div>
+        
+        <input type="text" id="search" placeholder="Search items..." onkeyup="searchItem()">
+        
+        <div class="category-container" id="categories"></div>
+    </div>
+    <div class="toast" id="toast">Item added successfully!</div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+```
+

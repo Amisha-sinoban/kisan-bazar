@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img src="farmer.jpg" alt="Farmer Profile Picture">
+            <h2>John Doe</h2>
+            <p>Customer ID: #123456</p>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-alt"></i>
+            </div>
+            <ul class="menu">
+                <li onclick="showSection('income')">Monthly Income</li>
+                <li onclick="showSection('transactions')">Transaction History</li>
+                <li onclick="showSection('reviews')">Customer Reviews</li>
+                <li onclick="showSection('account')">Account Details</li>
+            </ul>
+            <div class="logout">
+                <button onclick="logout()">Log Out</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="income" class="section">
+                <canvas id="incomeChart" width="400" height="200"></canvas>
+            </div>
+            <div id="transactions" class="section hidden">
+                <h3>Transaction History</h3>
+                <p>Transaction data will be displayed here...</p>
+            </div>
+            <div id="reviews" class="section hidden">
+                <h3>Customer Reviews</h3>
+                <div class="review">Great quality products! - <strong>Jane</strong></div>
+                <div class="review">Very reliable and professional. - <strong>Mark</strong></div>
+            </div>
+            <div id="account" class="section hidden">
+                <h3>Account Details</h3>
+                <p>Name: John Doe</p>
+                <p>Email: johndoe@example.com</p>
+                <p>Phone: +1234567890</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

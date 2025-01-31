@@ -1,0 +1,93 @@
+/* CSS Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+}
+
+.sidebar {
+    width: 30%;
+    padding-right: 20px;
+    border-right: 2px solid #ddd;
+}
+
+.sidebar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.sidebar h2,
+.sidebar p {
+    text-align: center;
+}
+
+.rating {
+    text-align: center;
+    color: gold;
+    font-size: 20px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu li:hover {
+    background: #eee;
+}
+
+.logout {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logout button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.logout button:hover {
+    background: darkred;
+}
+
+.content {
+    width: 70%;
+    padding-left: 20px;
+}
+
+.section {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
