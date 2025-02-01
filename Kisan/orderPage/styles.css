@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+  gap: 20px;
+}
+
+.order-block {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.order-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.order-details {
+  flex: 1;
+}
+
+.order-details h3 {
+  margin: 0 0 10px;
+}
+
+.order-details p {
+  margin: 5px 0;
+}
+
+/* New styles for profile icon */
+.profile-icon {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 24px;
+  text-decoration: none;
+  color: #007BFF; /* Bootstrap primary color */
+  transition: color 0.3s ease;
+}
+
+.profile-icon:hover {
+  color: #0056b3; /* Darken the color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .orders-list {
+      grid-template-columns: 1fr; /* Stacks orders on smaller screens */
+  }
+}

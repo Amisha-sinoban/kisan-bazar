@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Selection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Platform</h1>
+        <p class="subheading">Please select your login type:</p>
+        <div class="buttons">
+            <button onclick="showSection('farmer')">Farmer Login</button>
+            <button onclick="showSection('consumer')">Consumer Login</button>
+        </div>
+        <div id="farmer-section" class="section" style="display:none;">
+            <h2>Farmer Login/Signup</h2>
+            <input type="text" id="aadhaar" placeholder="Enter Aadhaar Number">
+            <button onclick="sendOtp()">Send OTP</button>
+            <input type="text" id="otp" placeholder="Enter OTP">
+            <button onclick="verifyOtp()">Verify OTP</button>
+            <button onclick="loginWithGoogle('farmer')">Login with Google</button>
+        </div>
+        <div id="consumer-section" class="section" style="display:none;">
+            <h2>Consumer Login</h2>
+            <button onclick="loginWithGoogle('consumer')">Login with Google</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
