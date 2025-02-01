@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Farmers List</h1>
+
+        <!-- Filter Dropdown -->
+        <label for="rating-filter">Sort by Rating:</label>
+        <select id="rating-filter" onchange="fetchFarmers()">
+            <option value="desc">High to Low</option>
+            <option value="asc">Low to High</option>
+        </select>
+
+        <!-- Farmers List -->
+        <ul id="farmer-list"></ul>
+    </div>
+
+    <script>
+        async function fetchFarmers() {
+            let order = document.getElementById("rating-filter").value;
+            const response = await fetch(`http://127.0.0.1:5000/farmers?order=${order}`);
+            const farmers = await response.json();
+            displayFarmers(farmers);
+        }
+
+        function displayFarmers(farmers) {
+            const farmerList = document.getElementById("farmer-list");
+            farmerList.innerHTML = "";
+
+            farmers.forEach(farmer => {
+                let li = document.createElement("li");
+                li.className = "farmer-card";
+                li.innerHTML = `
+                    <div class="farmer-info">
+                        <img src="star-icon.png" alt="⭐" width="20" class="star-icon">
+                        <span class="farmer-name">${farmer.name}</span>
+                    </div>
+                    <div class="farmer-details">
+                        <span>📍 ${farmer.location}</span>
+                        <span>📞 ${farmer.contact}</span>
+                        <span>📦 Quantity: ${farmer.quantity}</span>
+                    </div>
+                    <button class="view-profile" onclick="openProfile(${farmer.id})">View Profile</button>
+                `;
+                farmerList.appendChild(li);
+            });
+        }
+
+        function openProfile(id) {
+            window.open(`profile.html?id=${id}`, "_blank");
+        }
+
+        fetchFarmers();
+    </script>
+
+</body>
+</html>

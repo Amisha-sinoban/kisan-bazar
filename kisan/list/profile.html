@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="farmer-name"></h1>
+        <p><strong>Contact:</strong> <span id="farmer-contact"></span></p>
+        <p><strong>Location:</strong> <span id="farmer-location"></span></p>
+        <p class="rating">
+            <span id="farmer-rating"></span>
+            <img src="star-icon.png" alt="⭐" width="20">
+        </p>
+        
+        <h3>Statistics</h3>
+        <img id="farmer-chart" src="" alt="Farmer Statistics" width="80%">
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const farmerId = urlParams.get("id");
+
+        async function fetchFarmerData() {
+            const response = await fetch(`http://127.0.0.1:5000/farmer/${farmerId}`);
+            const farmer = await response.json();
+
+            if (farmer.error) {
+                document.body.innerHTML = "<h2>Farmer Not Found</h2>";
+                return;
+            }
+
+            document.getElementById("farmer-name").innerText = farmer.name;
+            document.getElementById("farmer-contact").innerText = farmer.contact;
+            document.getElementById("farmer-location").innerText = farmer.location;
+            document.getElementById("farmer-rating").innerText = farmer.rating;
+
+            fetchChart();
+        }
+
+        async function fetchChart() {
+            const response = await fetch(`http://127.0.0.1:5000/farmer/chart/${farmerId}`);
+            const data = await response.json();
+            document.getElementById("farmer-chart").src = `http://127.0.0.1:5000/${data.chart_url}`;
+        }
+
+        fetchFarmerData();
+    </script>
+
+</body>
+</html>
