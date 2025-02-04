@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .rating {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="farmer-name"></h1>
+        <p><strong>Contact:</strong> <span id="farmer-contact"></span></p>
+        <p><strong>Location:</strong> <span id="farmer-location"></span></p>
+        <p class="rating">
+            <strong>Average Rating:</strong> <span id="farmer-rating"></span> ⭐
+        </p>
+        
+        <h3>Rating Distribution</h3>
+        <canvas id="rating-chart"></canvas>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const farmerId = urlParams.get("id");
+
+        async function fetchFarmerData() {
+            const response = await fetch(`http://127.0.0.1:5000/farmer/${farmerId}`);
+            const farmer = await response.json();
+
+            if (farmer.error) {
+                document.body.innerHTML = "<h2>Farmer Not Found</h2>";
+                return;
+            }
+
+            document.getElementById("farmer-name").innerText = farmer.name;
+            document.getElementById("farmer-contact").innerText = farmer.contact;
+            document.getElementById("farmer-location").innerText = farmer.location;
+            document.getElementById("farmer-rating").innerText = farmer.rating;
+
+            renderChart(farmer.ratings);
+        }
+
+        function renderChart(ratings) {
+            const ctx = document.getElementById('rating-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ratings.map((_, index) => `Review ${index + 1}`),
+                    datasets: [{
+                        label: "Rating",
+                        data: ratings,
+                        backgroundColor: ['#007bff'],
+                        borderColor: ['#0056b3'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, max: 5 }
+                    }
+                }
+            });
+        }
+
+        fetchFarmerData();
+    </script>
+
+</body>
+</html>

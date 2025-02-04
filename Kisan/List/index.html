@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Directory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Beautify the rating slider */
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .rating-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .rating-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .rating-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .rating-value {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 1.2rem;
+            background: rgba(0, 123, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Farmers Directory</h1>
+
+        <!-- Filters Section -->
+        <div class="row mb-3">
+            <!-- Search Bar -->
+            <div class="col-md-4">
+                <input type="text" id="search-bar" class="form-control" placeholder="Search by name..." oninput="filterFarmers()">
+            </div>
+
+            <!-- Rating Slider -->
+            <div class="col-md-3 rating-container">
+                <span>Min Rating:</span>
+                <input type="range" class="rating-slider" id="rating-slider" min="0" max="5" step="0.1" value="0" oninput="updateRating()">
+                <span class="rating-value" id="rating-value">0</span>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="col-md-3">
+                <select id="category-filter" class="form-select" onchange="filterFarmers()">
+                    <option value="All">All Categories</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Organic Farming">Organic Farming</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Grains">Grains</option>
+                </select>
+            </div>
+
+            <!-- Sorting Dropdown -->
+            <div class="col-md-2">
+                <select id="sort-filter" class="form-select" onchange="filterFarmers()">
+                    <option value="none">Sort by Rating</option>
+                    <option value="high-to-low">High to Low</option>
+                    <option value="low-to-high">Low to High</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Farmers List -->
+        <div class="row" id="farmer-list"></div>
+    </div>
+
+    <script>
+        let farmers = [
+            { id: 1, name: "Ramesh Kumar", contact: "9876543210", location: "Delhi, India", rating: 4.5, categories: ["Vegetables", "Organic Farming"] },
+            { id: 2, name: "Suresh Patel", contact: "8765432109", location: "Mumbai, India", rating: 4.2, categories: ["Dairy", "Grains"] },
+            { id: 3, name: "Amit Singh", contact: "7654321098", location: "Pune, India", rating: 3.8, categories: ["Vegetables"] },
+            { id: 4, name: "Vikram Sharma", contact: "6543210987", location: "Kolkata, India", rating: 5.0, categories: ["Organic Farming", "Grains"] },
+            { id: 5, name: "Neha Verma", contact: "5432109876", location: "Bangalore, India", rating: 2.9, categories: ["Dairy"] }
+        ];
+
+        function displayFarmers(filteredFarmers = farmers) {
+            const farmerList = document.getElementById("farmer-list");
+            farmerList.innerHTML = "";
+
+            if (filteredFarmers.length === 0) {
+                farmerList.innerHTML = "<div class='col-12 text-center'><p class='text-danger'>No farmers found</p></div>";
+                return;
+            }
+
+            filteredFarmers.forEach(farmer => {
+                let col = document.createElement("div");
+                col.classList.add("col-md-4", "mb-4");
+
+                col.innerHTML = `
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">${farmer.name}</h5>
+                            <p class="card-text"><strong>Contact:</strong> ${farmer.contact}</p>
+                            <p class="card-text"><strong>Location:</strong> ${farmer.location}</p>
+                            <p class="card-text">
+                                <strong>Rating:</strong> ${farmer.rating} ⭐
+                            </p>
+                            <p class="card-text"><strong>Categories:</strong> ${farmer.categories.join(", ")}</p>
+                            <button class="btn btn-primary w-100" onclick="openProfile(${farmer.id})">View Profile</button>
+                        </div>
+                    </div>
+                `;
+                farmerList.appendChild(col);
+            });
+        }
+
+        function openProfile(id) {
+            window.open(`profile.html?id=${id}`, "_blank");
+        }
+
+        function updateRating() {
+            let minRating = parseFloat(document.getElementById("rating-slider").value);
+            document.getElementById("rating-value").textContent = minRating;
+            filterFarmers();
+        }
+
+        function filterFarmers() {
+            let searchText = document.getElementById("search-bar").value.toLowerCase();
+            let minRating = parseFloat(document.getElementById("rating-slider").value) || 0;
+            let category = document.getElementById("category-filter").value;
+            let sortOrder = document.getElementById("sort-filter").value;
+
+            let filtered = farmers.filter(farmer =>
+                farmer.rating >= minRating &&
+                (category === "All" || farmer.categories.includes(category)) &&
+                (farmer.name.toLowerCase().includes(searchText) ||
+                 farmer.location.toLowerCase().includes(searchText) ||
+                 farmer.categories.some(cat => cat.toLowerCase().includes(searchText)))
+            );
+
+            if (sortOrder === "high-to-low") {
+                filtered.sort((a, b) => b.rating - a.rating);
+            } else if (sortOrder === "low-to-high") {
+                filtered.sort((a, b) => a.rating - b.rating);
+            }
+
+            displayFarmers(filtered);
+        }
+
+        displayFarmers();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
