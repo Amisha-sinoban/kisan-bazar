@@ -1,0 +1,196 @@
+body {
+    background: #e8f5e9;
+}
+.container img {
+    margin-top: 20px; /* Space above the GIF */
+    max-width: 100%;
+    height: auto;
+}
+
+.button-container {
+    margin-top: 20px; /* Space between GIF and buttons */
+    display: flex;
+    gap: 15px; /* Space between Login and Register buttons */
+    justify-content: center; /* Centering buttons */
+}
+
+
+.container {
+    text-align: center;
+    padding: 50px 0;
+    margin-top: 50px;
+   
+}
+.intro-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.intro-image img {
+    width: 100%; /* Make it fill the container */
+    max-width: 200px; /* Increase max-width for a bigger size */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing issues */
+}
+.intro-image {
+    flex: 1; /* Increase the space allocated for the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-text {
+    flex: 1; /* Text takes less space compared to the image */
+    max-width: 50%;
+}
+
+
+
+
+
+.intro-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding-top: 50px;
+    margin-top: 20px;
+}
+
+.intro-text {
+    max-width: 50%;
+}
+
+.intro-text h1 {
+    color: #2d6a4f;
+    font-weight: bold;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    gap: 1rem;  /* Space between navbar items */
+    background: rgb(80, 178, 80);
+    padding: 10px 20px;  /* Adjust padding to avoid overflow */
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000; 
+    box-shadow: 20px 0 10px rgba(245, 245, 220, 0.849);
+    align-items: center;  /* Vertically center items */
+}
+
+.top-nav a {
+    color: #59ca51;
+    text-decoration: none;
+    font-weight: 300;
+    padding-right: 12px; 
+    margin-right:12px;
+    font-size: 14px;
+}
+
+.top-nav a:first-child {
+    margin-left: 10px; /* Add space before the first item */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top-nav a:last-child {
+    margin-right: 10px; /* Add space after the last item */
+}
+
+.top-nav a:hover {
+    color: yellow;
+}
+
+.top-nav a[href*="services"] {
+    color: white !important;
+}.top-nav a[href*="FAQ"] {
+    color: white !important;
+}
+.top-nav a[href*="aboutus"] {
+    color: white !important;
+}.top-nav a[href*="contactus"] {
+    color: white !important;
+}.top-nav a[href*="how"] {
+    color: white !important;
+}.top-nav a[href*="reviews"] {
+    color: white !important;
+}.top-nav a[href*="about"] {
+    color: white !important;
+}
+.btn-custom {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+.features,
+.services,
+.reviews,
+.aboutus {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contactus {
+    margin-top: 30px;
+    background: rgba(69, 179, 91, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.mt-4.p-3.bg-light.rounded.text-center {
+    background: green !important;
+    color: white !important;
+}
+#teamCarousel .team-card h5 {
+    font-size: 2rem; /* Adjust the size as per your preference */
+    font-weight: bold;
+}
+.container img {
+    margin-top: 20px; /* Adds space above the GIF */
+    max-width: 100%; /* Ensures it doesn't overflow the container */
+    height: auto; /* Maintains the aspect ratio of the GIF */
+}
+
+.gif-container {
+    background: url("https://i.pinimg.com/originals/fd/15/44/fd154489bac4c07e5a8b08f7dfe169ce.gif") no-repeat center center;
+    background-size: cover; /* Ensures the GIF covers the container */
+    height: 300px; /* Adjust height as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px; /* Optional: for rounded corners */
+}
+
+.button-container {
+    margin-top: 20px; /* Space between background and buttons */
+    display: flex;
+    gap: 15px; /* Space between Login and Register buttons */
+    justify-content: center;
+}
