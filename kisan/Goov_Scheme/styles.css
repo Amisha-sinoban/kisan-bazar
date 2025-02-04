@@ -1,0 +1,137 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #00a86b, #006d3e);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Farming Scene */
+.farm-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Sun Animation */
+.sun {
+    width: 80px;
+    height: 80px;
+    background: yellow;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: sunrise 5s linear infinite alternate;
+}
+
+@keyframes sunrise {
+    0% { transform: translateX(-50%) translateY(20px); }
+    100% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Cloud Animations */
+.cloud {
+    width: 100px;
+    height: 50px;
+    background: white;
+    position: absolute;
+    top: 20%;
+    border-radius: 50px;
+    opacity: 0.8;
+    animation: moveClouds 8s linear infinite;
+}
+
+.cloud1 {
+    left: -10%;
+    animation-duration: 12s;
+}
+
+.cloud2 {
+    right: -10%;
+    top: 30%;
+    animation-duration: 10s;
+}
+
+@keyframes moveClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(120vw); }
+}
+
+/* Grass */
+.grass {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #007a33, #00a86b);
+    position: absolute;
+    bottom: 0;
+}
+
+/* Container */
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    max-width: 400px;
+    transition: 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+/* Heading */
+h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+/* Description */
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+button {
+    background: linear-gradient(45deg, #ff8c00, #ff0080);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Button Hover Effect */
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(255, 140, 0, 0.5);
+}
+
+/* Button Click Effect */
+button:active {
+    transform: scale(0.98);
+}
