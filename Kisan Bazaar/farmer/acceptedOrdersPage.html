@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accepted Orders</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="top-nav" id="topnavi">
+        <a href="index.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#FAQ">FAQ</a>
+        <div class="dropdown">
+            <a href="#profile" id="profile-icon"><i class="fa-solid fa-user"></i></a>
+            <ul class="dropdown-content">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#logout">Logout</a></li>
+                <li><a href="#darkmode">Dark Mode</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Accepted Orders</h1>
+        <div id="acceptedOrders"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const acceptedOrdersContainer = document.getElementById('acceptedOrders');
+            let orders = localStorage.getItem('acceptedOrders');
+            if (orders) {
+                orders = JSON.parse(orders);
+                orders.forEach(order => {
+                    const orderDiv = document.createElement('div');
+                    orderDiv.classList.add('recieved');
+                    orderDiv.innerHTML = `
+                        <h2>Order Received</h2>
+                        <p>${order.item}</p>
+                        <p>${order.quantity}</p>
+                        <p>${order.price}</p>
+                        <p>${order.duration}</p>
+                    `;
+                    acceptedOrdersContainer.appendChild(orderDiv);
+                });
+            } else {
+                acceptedOrdersContainer.innerHTML = '<p>No accepted orders yet.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>
