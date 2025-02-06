@@ -1,0 +1,168 @@
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #78ef80; /* Light green color */
+    margin-top: 80px; /* To avoid overlap with the fixed navbar */
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    gap: 1rem;  /* Space between navbar items */
+    background: rgb(14, 161, 14);
+    padding: 10px 20px;  /* Adjust padding to avoid overflow */
+    height: 100px;
+    position: fixed;    
+    top: 0;
+    left: 0;
+    width: 100%; 
+}
+
+.navbar-nav .nav-link {
+    color: rgb(255, 255, 255); /* Change nav item color to white */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #555; /* Change hover color to a darker shade */
+}
+
+/* Section styling */
+.section {
+    background-color: #ffffff; /* White background for sections */
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Main display section */
+#about {
+    padding: 100px 0; /* Increase padding to create more space from the navbar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+#about h1 {
+    font-style: italic;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    margin-top: 40px ;
+}
+
+#about p {
+    font-size: 1.2rem;
+    margin-bottom: 20px; /* Add margin to create space between text and photo */
+}
+
+#about img {
+    width: 100%; /* Adjust the image size */
+    border-radius: 10px;
+}
+
+#about .btn-success {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ef4c59; /* Button background color */
+    color: rgb(15, 5, 5);
+    border-radius: 5px;
+    border: none;
+}
+
+/* Offers section */
+#offers {
+    padding: 50px 0;
+    border-top: 2px solid #ddd; /* Boundary for the top of the section */
+    border-bottom: 2px solid #ddd; /* Boundary for the bottom of the section */
+}
+
+.offer-box {
+    background: #c8f7c5; /* Light Green Color */
+    padding: 30px;
+    border-radius: 50px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: relative;
+    margin: 50px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.offer-box:hover {
+    transform: scale(1.1);
+}
+
+/* Testimonials Section */
+#testimonials {
+    padding: 50px 0;
+}
+
+.testimonial-container {
+    position: relative;
+    max-width: 800px; /* Increase the width */
+    margin: auto;
+    overflow: hidden;
+}
+
+.review {
+    display: none;
+    font-style: italic;
+    font-size: 1.5rem; /* Increase font size */
+    padding: 60px; /* Double the padding */
+    background-color: #e0f7fa; /* Lighter blue color */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 40px 0; /* Double the margin to create more space between reviews */
+    border: 1px solid #ddd; /* Add border to make it more distinct */
+}
+
+.review.active {
+    display: block;
+}
+
+/* Tutorial section */
+#tutorial {
+    padding: 50px 0;
+    border-top: 2px solid #ddd; /* Boundary for the top of the section */
+    border-bottom: 2px solid #ddd; /* Boundary for the bottom of the section */
+}
+
+#tutorial h2 {
+    margin-bottom: 30px; /* Add margin to create space between the text and the video iframe */
+    font-family: 'Arial', sans-serif; /* Change the font */
+    font-size: 2.5rem; /* Increase font size */
+    color: #549dea; /* Blue color */
+    font-style: italic;
+}
+
+iframe {
+    border-radius: 10px;
+}
+
+/* Footer section */
+.contactus {
+    margin-top: 30px;
+    background: rgb(14, 161, 14);
+    padding: 20px;
+    border-radius: 10px;
+    color: white; /* Change text color to white */
+    text-align: center;
+}
+
+.mt-4.p-3.bg-light.rounded.text-center {
+    background: rgb(14, 161, 14) !important;
+    color: white !important;
+}
