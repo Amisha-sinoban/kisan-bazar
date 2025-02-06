@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function loadPage(page) {
+            document.getElementById("content").innerHTML = document.getElementById(page).innerHTML;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile"></div>
+            <h2 class="username">John Doe</h2>
+            <ul>
+                <li onclick="loadPage('logout')"><i class="fas fa-sign-out-alt"></i> Logout</li>
+                <li onclick="loadPage('reviews')"><i class="fas fa-star"></i> Reviews</li>
+                <li class="active" onclick="loadPage('transactions')"><i class="fas fa-history"></i> Transaction History</li>
+                <li onclick="loadPage('income')"><i class="fas fa-chart-line"></i> Monthly Income</li>
+            </ul>
+        </aside>
+        
+        <main id="content" class="content">
+            <div id="transactions">
+                <div class="top-bar">
+                    <button class="about-btn">About</button>
+                    <button class="faq-btn">FAQ</button>
+                </div>
+
+                <h2 class="section-title">Transaction History</h2>
+
+                <div class="transaction-card">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <div class="transaction-details">
+                        <h3>Wheat</h3>
+                        <p><strong>Price:</strong> ₹500</p>
+                        <p><strong>Quantity:</strong> 1kg</p>
+                        <p><strong>Delivery Date:</strong> 3 February, 2025</p>
+                        <p><strong>Retailer:</strong> Amisha Singh</p>
+                    </div>
+                    <i class="fas fa-phone call-icon"></i>
+                </div>
+
+                <div class="transaction-card">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <div class="transaction-details">
+                        <h3>Spinach</h3>
+                        <p><strong>Price:</strong> ₹250</p>
+                        <p><strong>Quantity:</strong> 1kg</p>
+                        <p><strong>Delivery Date:</strong> 1 February, 2025</p>
+                        <p><strong>Retailer:</strong> Deepanshi Goyal</p>
+                    </div>
+                    <i class="fas fa-phone call-icon"></i>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

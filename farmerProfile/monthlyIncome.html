@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="logo">ⓑ</div>
+        <div class="nav-links">
+            <a href="#">Products</a>
+            <a href="#">Solutions</a>
+            <a href="#">Community</a>
+            <a href="#">Resources</a>
+            <a href="#">Pricing</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="auth-buttons">
+            <button class="sign-in">Sign in</button>
+            <button class="register">Register</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="https://via.placeholder.com/100" alt="Profile">
+            </div>
+            <ul>
+                <li>Logout</li>
+                <li>Reviews</li>
+                <li>Transaction history</li>
+                <li>Monthly Income</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <canvas id="myChart"></canvas>
+        </main>
+
+    </div>
+
+    <script>
+        // Chart.js Bar Chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [
+                    {
+                        label: 'Product A',
+                        data: [2.9, 4.9, 4.3, 5.1, 3.8, 4.3, 4.8],
+                        backgroundColor: 'red',
+                    },
+                    {
+                        label: 'Product B',
+                        data: [2.7, 4.0, 3.7, 3.1, 3.2, 3.9, 3.0],
+                        backgroundColor: 'blue',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
