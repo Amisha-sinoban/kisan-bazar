@@ -25,16 +25,30 @@
         </div>
         
         <div class="fees-container">
-            <label for="logistic-fees">Logistic Fees ($):</label>
-            <input type="number" id="logistic-fees" value="0" min="0" step="0.01"/>
+            <div class="logistic-fees">
+                <label>Logistic Fees: $</label>
+                <span id="logistic-fees">0.00</span>
+            </div>
 
-            <label for="platform-fees">Platform Fees ($):</label>
-            <input type="number" id="platform-fees" value="0" min="0" step="0.01"/>
+            <div class="platform-fees">
+                <label>Platform Fees: $</label>
+                <span id="platform-fees">3.00</span>
+            </div>
 
             <div class="total-product-price">
                 <label>Total Product Price: $</label>
-                <span id="total-product-price">10.00</span>
+                <span id="total-product-price">13.00</span>
             </div>
+        </div>
+
+        <div class="negotiation-container">
+            <label for="negotiation-price">Your Offer ($):</label>
+            <input type="range" id="negotiation-price" min="0" max="100" step="0.01" value="10"/>
+            <span id="negotiation-value">10.00</span>
+
+            <button id="negotiate-button">Negotiate</button>
+
+            <div class="negotiation-result" id="negotiation-result"></div>
         </div>
     </main>
     <script src="script.js"></script>
