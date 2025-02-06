@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Supply Chain</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            transition: background 0.3s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #007bff;
+        }
+        
+        /* Search Bar */
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box:focus {
+            box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.4);
+        }
+        
+        /* FAQ Accordion */
+        .faq-item {
+            background: #fff;
+            margin-top: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #ddd;
+        }
+        .faq-item.active {
+            border-left: 4px solid #007bff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .faq-question {
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #f8f9fa;
+            transition: 0.3s;
+        }
+        .faq-question:hover {
+            background: #007bff;
+            color: white;
+        }
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            color: #555;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        .dark-mode .container {
+            background: #1e1e1e;
+            color: white;
+            box-shadow: none;
+        }
+        .dark-mode .faq-question {
+            background: #292929;
+            color: white;
+        }
+        .dark-mode .faq-answer {
+            background: #333;
+            color: #ddd;
+        }
+        .dark-mode .search-box {
+            background: #333;
+            color: white;
+            border: 2px solid #555;
+        }
+
+        /* Dark Mode Toggle */
+        .toggle-container {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .toggle-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .toggle-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Dark Mode Toggle -->
+        <div class="toggle-container">
+            <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        </div>
+
+        <h1>Frequently Asked Questions</h1>
+        
+        <!-- Search Box -->
+        <input type="text" class="search-box" id="faq-search" placeholder="Search FAQs..." onkeyup="searchFAQ()">
+        
+        <div id="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">How does the supply chain system work? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    This is a marketplace where farmers can sell their products directly to consumers, eliminating middlemen and increasing profits. 
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can we connect to best farmers? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">You can select the farmer by your own..You just need to select category of your product..A farmer directory will appear..u can select best farmer based on ratings.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is there a minimum order quantity? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">No, buyers can purchase in any quantity.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What payment methods are accepted? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">We accept online payments, UPI, bank transfers, and cash on delivery in selected regions.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I track my order after placing it?<i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">You can track your order from the "My Orders" section in your account. We also send real-time updates via SMS</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel or modify my order after placing it?
+                    <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Yes, you can cancel or modify your order within a specific timeframe (before the farmer prepares it for dispatch). Visit "My Orders" to check cancellation options.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What if I receive damaged or low-quality products?
+                    <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">If you are unsatisfied with your order, you can request a return or refund within the allowed period. Check our Refund Policy for more details.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long does delivery take?
+                    <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Delivery usually takes 24-48 hours, depending on your location and the farmer’s dispatch schedule. Urgent deliveries may be available in select regions.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I contact customer support?
+                    <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">You can reach us via phone, or live chat(which is available on our every page). Visit the "Contact Us" section for support options.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How is quality assurance handled? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">All products go through strict quality checks before delivery to ensure high standards.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle FAQ answers
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // FAQ Search Functionality
+        function searchFAQ() {
+            let query = document.getElementById('faq-search').value.toLowerCase();
+            let faqs = document.querySelectorAll('.faq-item');
+
+            faqs.forEach(faq => {
+                let question = faq.querySelector('.faq-question').innerText.toLowerCase();
+                if (question.includes(query)) {
+                    faq.style.display = "block";
+                } else {
+                    faq.style.display = "none";
+                }
+            });
+        }
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            let btn = document.querySelector(".toggle-btn");
+            if (document.body.classList.contains("dark-mode")) {
+                btn.innerHTML = "☀ Light Mode";
+            } else {
+                btn.innerHTML = "🌙 Dark Mode";
+            }
+        }
+    </script>
+
+</body>
+</html>
