@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Farming Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>🌱 AI Farming Dashboard</h3>
+            <ul class="menu">
+                <li>Weather Reports</li>
+                <li>AI Recommendations</li>
+                <li>Settings</li>
+                <li><span class="dark-mode-toggle">🌙 Dark Mode</span></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="cityTitle">Your Location: Detecting...</h2>
+            <div class="weather-info">
+                <h1 id="temp">--°C</h1>
+                <p><strong>Wind Speed:</strong> <span id="wind">--</span> m/s</p>
+                <p><strong>Humidity:</strong> <span id="humidity">--</span>%</p>
+                <p><strong>Condition:</strong> <span id="condition">--</span></p>
+            </div>
+
+            <h3>📊 Forecast for 7 Days:</h3>
+            <div class="forecast" id="forecastContainer"></div>
+            
+            <h3>🤖 AI-Based Farming Recommendations:</h3>
+            <div class="recommendations" id="recommendationsContainer">Detecting...</div>
+        </main>
+    </div>
+</body>
+</html>
