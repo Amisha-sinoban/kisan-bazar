@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Buy Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 138, 0, 0.8); }
+            to { text-shadow: 0 0 20px rgba(229, 46, 113, 0.8); }
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .countdown div {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .email-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #ff8a00;
+            color: white;
+            font-size: 16px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e52e71;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: #ff8a00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>Our Buy Page is Under Construction! 🚀</p>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown">
+            <div><span id="days">00</span> Days</div>
+            <div><span id="hours">00</span> Hours</div>
+            <div><span id="minutes">00</span> Minutes</div>
+            <div><span id="seconds">00</span> Seconds</div>
+        </div>
+
+        <!-- Email Subscription -->
+        <p>Stay Updated! Subscribe for Early Access</p>
+        <p>Get Notified via SMS 📱</p>
+        <div class="phone-box">
+            <input type="text" placeholder="Enter your phone number" id="phone" maxlength="10">
+            <button onclick="subscribe()">Notify Me</button>
+        </div>
+
+        <p id="subscription-message" style="color: lightgreen; margin-top: 10px;"></p>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer Logic
+        const launchDate = new Date("April 1, 2025 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            if (timeLeft < 0) {
+                document.querySelector(".countdown").innerHTML = "<p>We are Live Now! 🎉</p>";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Subscription Function
+        function subscribe() {
+            let email = document.getElementById("email").value;
+            if (email.includes("@")) {
+                document.getElementById("subscription-message").innerText = "✅ You are subscribed!";
+                document.getElementById("email").value = "";
+            } else {
+                document.getElementById("subscription-message").innerText = "❌ Please enter a valid email!";
+            }
+        }
+    </script>
+
+</body>
+</html>
